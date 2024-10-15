@@ -1,0 +1,130 @@
+
+Fala, Impressionadores! Nesse vídeo eu quero ensinar vocês a fazerem transcrição de áudios, qualquer tamanho de áudio, qualquer áudio que você tenha, com uma ferramenta muito boa da OpenAI, que é uma ferramenta gratuita, você não vai precisar nem de chave de API. Vou ensinar vocês a usarem isso dentro do Python. Acompanha comigo, que o passo a passo vai estar todo nessa aula.
+
+🎵 Música de introdução 🎵 Bom, galera, se você gostou da ideia do vídeo, já deixa aqui o seu like, se inscreve no canal para continuar acompanhando e aprendendo com a gente. E vou deixar para vocês aqui na descrição dois links importantes. O primeiro deles é o link do gabarito que a gente vai fazer na aula de hoje, que essencialmente é um código padrão para você fazer transcrições usando essa ferramenta da OpenAI.
+
+Então o gabarito vai ser um código que você pode salvar no seu computador e usar ele sempre que você precisar. E o segundo link que eu vou deixar também na descrição é o de um minicurso gratuito de Python que eu vou disponibilizar para vocês. E você vai poder pegar esse minicurso, aprender com ele, é um projeto completo que a gente vai fazer no Python.
+
+Você pode fazer isso depois da aula ou antes da aula, mas pega lá, já pega ele para você agora e depois volta aqui para o vídeo. Bom, galera, é o seguinte, para a gente conseguir usar essa ferramenta da OpenAI, a gente vai precisar instalar uma biblioteca que é a OpenAI Whisper. Esse Whisper é justamente a ferramenta que consegue fazer transcrição de áudio e ele serve exatamente para isso.
+
+Ele consegue fazer transcrição de áudio essencialmente em qualquer língua ou pelo menos nas principais línguas. Algumas línguas ele consegue fazer transcrições muito boas, como espanhol, inglês, português, italiano. E algumas outras línguas um pouco menos usadas, digamos assim, às vezes a transcrição dele não é tão boa assim.
+
+Você vai ver que ela não é perfeita, como nenhuma transcrição é perfeita, mas ela realmente é muito boa. E tem um parâmetro que a gente consegue ficar ajustando nela para tornar ela melhor ainda e eu vou mostrar para vocês. Vai ser um trade-off, a gente vai escolher entre velocidade de execução versus qualidade da transcrição.
+
+Então a gente vai entender como é que isso vai funcionar. Para a gente fazer isso, o primeiro passo é a gente instalar essa biblioteca. Então você pode escolher o editor de código que você quiser, abre lá o seu terminal nesse editor de código.
+
+Então eu vou abrir aqui o meu prompt de comando, está vendo? Comando prompt. Chega aqui agora e eu vou digitar um pip install openai-whisper. Após isso daqui, ele vai fazer a instalação para você. 
+
+No meu caso ela já está instalada. Então ele vai instalar várias coisas, vai demorar um pouquinho, mas ele vai instalar e vai funcionar numa boa. Só que essa biblioteca para ela funcionar, ela precisa que você tenha instalado no seu computador e configurado nas suas variáveis de ambiente o FFmpeg.
+
+E eu deixei um link disponível aqui para vocês, onde vocês podem pegar e seguir esse passo a passo aqui para instalar o FFmpeg no computador de vocês. Então se você olhar, olha lá, essencialmente aqui é o do Windows, mas você pode simplesmente chegar no Google e digitar FFmpeg download e vai aparecer lá no Linux, no Mac também. Aqui está o passo a passo do Windows. 
+
+Está aqui no Windows, acho que um pouquinho mais chato do que nos outros. Basicamente o que você vai ter que fazer é, primeiro, clicar nesse link para fazer o download do FFmpeg, do zip. Então quando você clicar nesse link aqui, ele já vai iniciar o download para você, está vendo? Vai iniciar aqui o download, FFmpeg, e ele vai baixar esse zip para você.
+
+Aí você vai abrir esse arquivo zipado e você vai colocar, vai vir nesse segundo passo aqui. Ou seja, você vai lá na sua pasta download, está vendo o arquivo? Ele aqui vai ter um arquivo zipado aqui dentro. Você vai tirar esse arquivo daqui de dentro e vai jogar ele lá, por exemplo, na sua própria pasta download mesmo.
+
+Então você pega e joga ele para cá. Quando você jogar ele para cá, você vai pegar esse cara, essa pasta que ele gerou, está vendo? Essa pasta aqui que ele gerou, e você vai mudar o nome dessa pasta aqui para FFmpeg. Só isso aqui, está vendo? FFmpeg. 
+
+Vai mudar para esse nome. E aí você vai tirar ela daqui, vai dar um CTRL X nela, e lá no seu computador, no disco local C, você vai colar ela. Então você vai colar ela e ela vai aparecer aqui, está vendo? FFmpeg, ela vai estar aqui. 
+
+Isso é você meio que manualmente instalando esse cara no seu computador. Então você pega a pasta e joga para cá. Está pronto.
+
+Aí a única outra coisa que você vai ter que fazer é liberar ela nas suas variáveis de ambiente. Você pode configurar manualmente isso lá nas suas variáveis de ambiente, ou então rodar esse comando aqui, está vendo? Esse comando aqui, a pasta já tem que estar lá naquela, está vendo? Deixa eu colocar o C, FFmpeg, já tem que estar lá a pasta FFmpeg no seu... Lá naquela pasta que a gente colocou agora, você vai copiar isso aqui, e aí você vai abrir o CMD no seu computador. Só que quando você abrir o CMD, o prompt de comando, você vai abrir ele como administrador.
+
+Então botão direito, executar como administrador. E aí quando você fizer isso, você vai clicar em sim, e aí aqui você vai colar aquele comando e vai dar enter. A mensagem que ele vai dar para você é essa aqui.
+
+Êxito, o valor foi especificado, foi salvo. Ou seja, você criou essa variável de ambiente. Depois que você fez isso, muito importante, fecha o seu VSCode e abre o VSCode de novo.
+
+O importante é que no VSCode, você aqui, quando você abrir o VSCode, ou o editor de código que você estiver usando, é quando você abrir o seu prompt de comando, quando você chegar aqui e digitar FFmpeg e der um enter, ele aparece essas mensagens aqui, e não aparece aquele texto FFmpeg, não é um comando reconhecido. Se aparecer isso, reinicie o seu computador e ele já vai funcionar. Caso contrário, caso ele apareça aqui tudo bonitinho, você está com tudo pronto para você poder executar os seus códigos.
+
+Tranquilo? Então com isso, você já vai ter tudo configurado para você poder usar o OpenAI. E aí o nosso código é a parte mais tranquila, digamos assim. Você vai primeiro importar a biblioteca Whispers, que é essa biblioteca da OpenAI.
+
+Você instala ela assim, mas na hora de importar, você importa assim, Whispers. E aí repara o seguinte, eu tenho aqui dois áudios que eu vou deixar disponíveis para vocês fazerem download também. Eu recomendo que vocês façam o código todo com os meus áudios.
+
+Depois se você quiser, você pode usar um áudio seu e eu vou te dar até umas dicas ou outras assim, de como você garantir que essa leitura vai ser boa e tudo mais. Então a gente vai fazendo aqui. Aí o Whispers, essencialmente, vai precisar de dois comandos para poder usar ele.
+
+O primeiro é você criar o seu modelo, que é um modelo digamos assim de inteligência artificial, que vai conseguir ler esse seu áudio. E aí nesse modelo, a gente vai usar o Whispers.loadmodel. E aqui dentro, lá no Whispers, se você entrar na documentação dele, eu vou até abrir aqui que eu acho que vai ser super interessante para mostrar para vocês. Vou abrir aqui, OpenAI Whisper Python.
+
+Então vou botar aqui, OpenAI Whisper Python. E a gente vai entrar aqui no primeiro link. Nesse primeiro link, você vai olhando, chegando aqui para baixo, você vai ver que ele vai ter uma tabelinha para você, que são os modelos disponíveis que ele tem e as línguas disponíveis de tradução.
+
+Está vendo, espanhol, italiano, inglês e português. Ele erra muito pouco. Dependendo da língua, por exemplo, eu quero ler, sei lá, Maori.
+
+Não sei que língua é essa. Ela erra já bem mais do que no espanhol, italiano, inglês e português. Está vendo, mas aqui ainda tem alguma margem de erro.
+
+Qual é o ponto importante? O ponto é que, está vendo, a gente tem aqui vários modelos. O modelo Tiny, o modelo Base, o modelo Small, o modelo Medium e o modelo Large. Qual a diferença entre eles? Quanto menor o modelo, Tiny, Base, Small, não sei o que, menor é a capacidade que o seu computador precisa para rodar o modelo e mais rápido é a execução do modelo.
+
+Está vendo? Então, esse modelo aqui, ele roda 32 vezes mais rápido do que o modelo Large. E o modelo Large, você precisa de 10 GB de RAM para você conseguir fazer essa capacidade. Então, você tem que ter um computador muito bom para conseguir rodar o modelo Large.
+
+Mas não significa que com o seu computador que você está usando, você não vai conseguir. O modelo Base já é um modelo muito bom. Então, eu particularmente, para esse nosso exemplo, vou usar o modelo Base.
+
+Então, eu vou chegar aqui no nosso código e vou aqui passar o modelo Base para ele. Então, os nomes que você vai colocar aqui são os nomes dessa tabelinha mesmo. Então, eu vou passar para ele o modelo Base.
+
+E aí depois, o que você vai fazer? Você vai simplesmente pedir para o modelo fazer um transcribe. E aqui dentro do parênteses, você vai passar o áudio que você quer que ele transcreva para você. No meu caso, eu vou pedir para ele fazer o gravando.m4a. Esse arquivo m4a é o arquivo que o próprio gravador do Windows gera para a gente.
+
+Mas poderia ser mp3, por exemplo. O áudio vai funcionar numa boa. O que é importante? É importante que a qualidade do áudio seja legal.
+
+Essa ferramenta do transcribe tem vários parâmetros. E são parâmetros de ajuste do modelo. Então, se o seu modelo estiver com muito ruído de fundo, muita coisa e tal, talvez a sua transcrição não saia boa.
+
+Talvez, na verdade, a sua transcrição pause num determinado momento. Eu tinha gravado um áudio no WhatsApp mesmo assim, tinha me mandado no WhatsApp. Quando eu peguei ele em outro lugar, eu tentei rodar ele e o modelo não funcionou muito bem.
+
+Então, eu não recomendo que você grave áudios no WhatsApp e depois tente exportar do WhatsApp para você tentar usar. Porque áudio de WhatsApp, especificamente nos testes que eu fiz, ele não estava indo muito bem. Agora, áudio de um vídeo do YouTube que eu tinha testado, ele tinha ido bem.
+
+Áudio que eu gravei no meu próprio computador, ele tinha ido bem. Então, dependendo do áudio que você está querendo usar, ele vai funcionar bem ou vai funcionar mal. Também depende um pouco da qualidade do seu microfone.
+
+E como eu falei, você pode, se quiser, olhar o transcribe para ver os outros parâmetros que você pode ir passando para ele e para ele ir testando. Então, isso daqui é tudo o que você precisa fazer. Só que esse transcribe aqui, ele vai dar para você uma resposta.
+
+Então, eu vou armazenar essa resposta em uma variável. A resposta vai ser o modelo.transcribe. E aí, o que a gente vai fazer? Eu vou chegar aqui agora e simplesmente vou dar um print nessa resposta. E vamos rodar o código e ver o que vai funcionar.
+
+Olha só, rodei o código. Está vendo? Rodei. Ele vai demorar um pouquinho. 
+
+Por que vai demorar um pouquinho? Porque esse modelo base tem que ser criado. Depois de criado esse modelo base, ele precisa, essencialmente, ler o seu áudio. Então, ele demora um pouquinho. 
+
+Mas olha lá, mesmo demorando, ele dá para você aqui a resposta. E essa variável resposta é um dicionário. Um dicionário cujo parâmetro texto é o texto que ela leu.
+
+Então, eu poderia aqui só olhar o resposta text, se eu só quero saber o texto mesmo que ele transcreveu para mim. Mas, olha que legal. Mesmo eu deixando aqui o resposta completo, ele me diz aqui o texto.
+
+Fala galera, tudo bem? Se você não está inscrito no canal e está assistindo o vídeo aqui, você é maluco. Então, clica no botão para se inscrever no canal e para acompanhar a gente. E se eu pegar e rodar esse áudio aqui.
+
+Vou abrir ele aqui no meu computador e vou rodar esse áudio. Você vai ouvir ele falando exatamente isso. Olha só.
+
+Viu? Então, o áudio ele transcreveu de forma perfeita. Esse áudio aqui, que é um áudio relativamente curto, ele transcreveu de forma perfeita. Só que eu gravei um outro áudio maior.
+
+Como se fosse o início desse vídeo aqui. Quando eu fui gravar o início desse vídeo, eu falei. Cara, vou fazer o seguinte.
+
+Eu vou gravar o início desse vídeo em uma versão para eu botar em um áudio. Depois, eu vou gravar uma outra versão. Que é a versão oficial que vocês estão vendo aqui.
+
+Que foi o gravando 2.m4a. E aí, olha lá. Se eu rodar esse código agora, você vai ver que agora ele vai demorar mais. Por quê? Porque esse meu segundo áudio, se você olhar até na pasta aqui, ele é bem maior.
+
+Está vendo? Esse primeiro áudio aqui é de 200kb. Esse aqui é de 791kb. Ele vai demorar mais.
+
+Se você olhar as propriedades dele aqui, você vai ver o tamanho desse áudio. O tamanho desse áudio tem 30 segundos. Meu outro áudio tinha 5, 6 segundos.
+
+Ele demorou, mas não demorou tanto não. Já mostrou aqui para mim. E olha lá.
+
+Olha o que ele conseguiu transcrever no áudio. Fala, Impressionadores. Nesse vídeo, eu vou ensinar vocês a fazer uma transcrição em áudio.
+
+Usando uma ferramenta nova da OpenAI. É o que eu falo isso no áudio ali. Essa ferramenta vai permitir você instalar uma única biblioteca.
+
+Usando seu código em Python. Com 3, 4 linhas. Aqui já tem um leve erro.
+
+Você já vai conseguir transcrever não sei o que. Aí ele bota um texto aqui. Modelos.
+
+Ao invés de falar modelos, ele botou modelos. Está vendo? Então ele tem alguns erros. Porque eu estou usando o modelo base.
+
+Talvez você possa testar aqui o modelo small. O modelo mídimo. Para ver se ele consegue fazer essa transcrição melhor do que o modelo base conseguiu fazer a transcrição.
+
+Não tem problema. Então vai de testes mesmo que você quer ir fazendo. Mas repara.
+
+Com duas linhas de código, você consegue pegar um áudio e transcrever o áudio. Era esse potencial que eu queria mostrar para vocês. Era isso que eu queria trazer para vocês.
+
+Minha sugestão. Cara, testem com o áudio de vocês. Testa você gravando o áudio mesmo.
+
+Colocando aqui. Grava direto no seu computador. Pode tentar gravar no WhatsApp e baixando mesmo.
+
+É que os áudios do WhatsApp quando ele baixa. Eu acho que ele perde um pouco de qualidade. Ele vem muito compactado.
+
+E aí pode acabar atrapalhando um pouco o modelo de conseguir ler. Mas se você quiser, grava o áudio de algum lugar mesmo que você consiga gravar o áudio com qualidade. Joga para cá para o modelo.
+
+Provavelmente o modelo vai conseguir ler numa boa. Beleza? Espero de verdade que vocês tenham gostado. Espero que tenha feito sentido isso daqui.
+
+Espero que essa transcrição você possa usar para algum exemplo que você queira. Ou para alguma ferramenta que você esteja utilizando. Um grande abraço e até a próxima aula.
