@@ -1,0 +1,125 @@
+(Transcrito por TurboScribe.ai. Atualize para Ilimitado para remover esta mensagem.)
+
+Olá, seja bem-vindo à aula de número 17 de Sistemas Operacionais, onde a gente vai falar de gerenciamento de memória. Então, esse é um assunto que envolve a parte de gerenciamento de recursos. A gente falou em aulas anteriores que o sistema operacional tem duas funções.
+
+O primeiro servir de interface entre o usuário e a máquina do qual ele está utilizando. A segunda seria ele servir como gerenciador de recursos, como administrador de recursos, como mordomo de recursos, para saber quando ele deve alocar um determinado recurso para um programa e quando ele deve retirar um determinado recurso de um outro programa. E existem vários recursos, como a gente viu.
+
+Um dos recursos é o próprio processador. O outro recurso é o que a gente está vendo aqui. Seria o recurso da memória principal.
+
+Então, é esse recurso que a gente vai verificar como o sistema operacional ele gerencia, ele administra esse recurso que é chamado de memória. Então, em aulas anteriores, a gente falou sobre o quê? Sobre o tratamento de deadlock. Isso diz respeito ao gerenciamento de processo.
+
+O processo, ele é um programa execução e possui um processador. Esse processador vai ser gerenciado, vai ser compartilhado pelos processos, de forma que os processos, então, possam utilizar de forma otimizada o processador entre o quê? Entre os vários processos que são os programas que se encontram em execução. Então, esse é o assunto que a gente vai tratar.
+
+Que é o assunto de como a memória principal é gerenciada por um sistema operacional. E existem várias formas de gerenciar. Existem formas monoprogramadas, onde existe apenas um único programa.
+
+E existem formas para gerenciar memória quando ela é mais complexa, quando existem vários processos que são executados de forma concorrente. Então, existem várias formas de gerenciar memória, várias formas de quebrar memória e dar um pedaço de memória para cada processo. É isso que a gente vai ver nas próximas aulas, incluindo essa aula de hoje.
+
+Então, para dar uma motivação inicial, normalmente, os programadores, eles querem o quê? Eles querem um mundo ideal. O que seria, então, esse mundo ideal? O mundo ideal seria o quê? Seria uma memória, um computador que tenha uma memória grande o suficiente, uma memória que seja rápida, ou seja, me dê uma resposta o quanto antes do acesso que foi solicitado, assim como o quê? Com uma memória que não seja volátil. Uma memória que, quando eu desligar o computador, as informações contidas nessa memória não possam desaparecer até que eu instrua a sua exclusão dessa memória.
+
+Ao mesmo tempo, eu quero o quê? Eu quero uma memória que também os programadores, eles desejam uma memória que seja de baixo custo, que não precise pagar muito para obter essa memória. Então, são esses os requisitos, né? Seria o, como eu posso dizer, os dream technology, né? As tecnologias dos sonhos que os programadores gostam de ter para que eles possam, então, criar as suas aplicações. Obviamente, esse tipo de contexto, esse tipo de situação como vocês estão vendo aqui, ela não existe.
+
+Uma vez que existe uma infinidade de processos. E como existe uma infinidade de processos, é necessário que esses processos possam compartilhar o recurso chamado memória de forma o quê? De forma concorrente e paralela. É isso que a gente vai tentar falar aqui nessas próximas aulas.
+
+Obviamente que, como eu tinha dito, esse comportamento não existe e os programadores, eles necessitam o quê? De pouca memória, uma memória que, por vezes, é lenta, ela é volátil, ou seja, com o tempo, ela perde o seu conteúdo. Assim como existe um custo, né? Existe uma pirâmide de custo que seria o que a gente vai ver, então, aqui nesse slide. Bom, a memória, o sistema de computação, ela possui diversos tipos de memórias.
+
+Memórias como o registrador, né? Que vocês estão vendo aqui, que são essencialmente, eu vou redefinir, registradores são essencialmente memórias que se encontram dentro do processador e, consequentemente, como eles se encontram dentro do processador, o ΔD ali, a distância percorrida para acessar uma informação, é pequena, é menor do que acessar de uma memória principal. Em função disso, o acesso aos dados que se encontram no registrador, ele é o quê? Ele é mais rápido, que é um dos requisitos que a gente viu aonde? Que a gente viu aqui, uma memória que seja rápida para que possa, então, acessar os dados armazenados no registrador. Então, voltando aqui, o registrador é o quê? O registrador é uma memória que se encontra dentro da CPU e, consequentemente, ele tem um acesso mais rápido que as outras memórias que vocês estão vendo aqui.
+
+Então, aqui existe o quê? Existem duas setas, né? Duas setas. A primeira é no que diz respeito ao quê? No que diz respeito ao seu tamanho. O segundo é o que diz respeito ao quê? O que diz respeito à velocidade de acesso.
+
+Que são dois itens que foram mostrados aqui. Então, primeiro, a gente tem o quê? Primeiro, a gente tem aqui a parte do tamanho de memória, o size. E a segunda parte, a gente tem o quê? A gente tem a parte do quê? Do speed, que seria a velocidade de acesso.
+
+Então, quanto mais você desce aqui nessa memória, você vai ter, com certeza, aqui uma maior quantidade de armazenamento. Uma quantidade de bytes que podem ser armazenados nessa memória. Por outro lado, quanto mais você sobe nessa hierarquia, menor vai ser o quê? Menor vai ser o tempo de acesso.
+
+Consequentemente, o registrador é a memória que possui o menor tempo de acesso. Depois disso, vem a cache. A cache é a memória intermediária que fica entre a memória principal e a própria CPU.
+
+E como vocês estão vendo aqui, ela tem o quê? Ela tem vários níveis. Esse L vem de quê? De níveis, né? Você tem cache de nível 1, cache de nível 2 e assim por diante. O que são esses níveis? Esses níveis são, essencialmente, onde as caches se localizam.
+
+Então, hoje vocês têm o quê? Vocês têm arquiteturas que a gente chama de multicore. E essas arquiteturas multicore, elas possuem vários o quê? Vários núcleos de processamento. Existem caches que podem ser utilizadas ou não são compartilhadas por nenhum desses núcleos.
+
+Elas são particulares a um determinado núcleo. Por outro lado, existem caches que são o quê? Que são compartilhadas. São compartilhadas entre vários núcleos distintos.
+
+Então, são caches aí que são comuns a todos os núcleos. Então, existem diversos níveis e quanto maior, obviamente, aqui o nível 1, nível 2, nível 1, então, ele é mais rápido que o nível 2 em virtude do quê? Em virtude de estar mais próximo aqui do código de processamento. Bom, e aí existe também a memória RAM.
+
+São consideradas memórias principais. Existem, hoje em dia, máquinas que você compra RAMs de 8 GB, 4 GB, 16 GB, né? Que são dispositivos aí, são computadores. Quanto maior, né? Obviamente, são o quê? Quanto maiores eles são, são memórias que vão prover uma área de trabalho maior, melhor e maior para a aplicação do usuário.
+
+E existem os armazenamentos que a gente chama de armazenamentos persistentes e não voláteis. Ou seja, você desligou o computador, as informações contidas nessa memória, ela continua armazenada e não é excluída. E no final aqui da cadeia que a gente está vendo aqui, a gente tem o quê? A gente tem uns equipamentos de backups que ainda são utilizados, como os tape storage aqui que são unidades de fitas que normalmente são utilizados aí para a parte de backup, né? Cópia de segurança.
+
+Bom, esses são os níveis. A aula de hoje não é sobre isso, mas a aula de hoje é justamente para a gente saber como é que a gente vai gerenciar, principalmente esse item aqui, que seria o item da memória principal. Bom, então seguindo aqui, a tarefa do gerenciador para cada tipo de memória seria o quê? Gerenciar a hierarquia de memória, gerenciar os espaços livres e ocupados, alocar e localizar os processos dados na memória também, assim como controlar as partes da memória que estão em uso e as partes que não se encontram em uso.
+
+Ou seja, eu preciso fazer um mapeamento e preciso atualizar quais são as partes da memória principal que estão em uso e as que não estão em uso. Além disso, eu preciso cuidar do quê? Preciso cuidar de alocar e de desalocar a memória principal quando o processo terminar. Então, todo esse trabalho aí é feito por quê? Por um módulo do sistema operacional, um módulo do sistema operacional que se chama gerenciador de recursos.
+
+E esse gerenciador de recursos, esse recurso na realidade seria a memória. Então, gerenciador de recursos é como se fosse um módulo de computador, é um módulo do sistema operacional que cuida do quê? Que cuida da administração da memória do computador. Bom, as tarefas, além do que eu citei, seriam controlar as partes que estão em uso e tratar do problema, como eu falei aqui, do swap, que seria tirar o conteúdo da memória principal e colocar no disco.
+
+E assim como o inverso, tirar da memória principal e colocar no disco. Então, disco para memória principal, memória principal para disco. Esse seria o processo que a gente chama de swap, que a gente vai ver daqui para frente.
+
+Bom, existem várias gerências de memória, várias estruturas, layouts de memória que trabalhavam o que a gente chama de monoprogramação. Todo mundo sabe o que é monoprogramação. Monoprogramação seria o quê? Seria apenas um único processo sendo executado em um sistema de computação.
+
+Então, aqui a gente tem uma monoprogramação, apenas um único programa, assim como nesse cenário aqui. E existem três tipos diferentes. Uma é a que foi usada antigamente nos mainframes, nos computadores de grande porte, assim como essa que é largamente utilizada em sistemas operacionais e dispositivos handheld.
+
+Seria um smartphone, por exemplo, que tem o quê? Então, que encontra-se armazenado aonde? Numa memória apenas de leitura. Fez o boot, ligou o celular, o smartphone, essa memória de leitura, então, acessada para que, então, possa carregar o que? Possa carregar, então, o sistema operacional. Assim como a gente tem os primeiros computadores pessoais, onde a gente tem o sistema operacional aqui na memória principal, começando com o endereço zero, e os drivers de dispositivos, como a gente vai ver, são softwares que controlam dispositivos que são armazenados aonde? Que são armazenados em memórias apenas de leitura.
+
+Então, três cenários aqui, né? Um, o sistema operacional na RAM, o outro em dispositivos de handhelds, né? Um smartphone, um tablet, né? Onde o sistema operacional fica na memória apenas de leitura, e o terceiro aqui, onde o sistema operacional, ele encontra-se na RAM, e existem os drivers de dispositivos, softwares que vão controlar o dispositivo e que se encontram também no dispositivo apenas de leitura, memórias ROM. Bom, vamos fazer, então, quando a gente quer a multiprogramação. Aqui a gente tem um outro cenário, né? Anteriormente a gente tinha monoprogramação, agora a gente tem a multiprogramação.
+
+O que seria esse cenário com multiprogramação? Então, o cenário com multiprogramação seriam vários computadores que vão compartilhar uma única CPU e uma única memória. Então, como é que a gente faz esse gerenciamento? Como é que a gente faz a divisão dessa memória entre processos diferentes? Bem simples. A primeira forma, que foi uma forma, inclusive, que eu já cheguei a trabalhar, foi essa forma particionada aqui.
+
+Nessa forma particionada quebra a memória principal em várias partições diferentes, onde cada uma delas fica alocada para uma determinada fila, para uma determinada partição. E aqui, então, a gente tem o quê? A gente tem três trabalhos, jobs aqui, que podem, que são o quê? Que estão nessa fila da partição 1. Na partição 2, existem o quê? Existem outro, um único job aqui e assim por diante. Na partição 4, dois jobs esperando por essa partição, por essa parte da memória.
+
+Bom, além da divisão em si, a gente tem que cuidar também de quê? A gente tem que cuidar de fazer justamente a parte da proteção para que o processo não venha invadir partes de outro processo. Então, para isso, existem o quê? Esses dois registradores aqui, né? O que é o registrador? O registrador seria essa memória que se encontra onde? Que se encontra na CPU, que é bastante rápida. Então, dois registradores.
+
+Um para armazenar a base e o outro para armazenar o quê? Para armazenar o limite. Para que serve isso, pessoal? Serve assim, ó. Se você tem um programa de 40K e esse programa foi armazenado, vamos dizer assim, no endereço 20 da memória principal, o que eu faço? Eu tenho que adicionar aqui, ó. 40 mais 20, 60, que seria o quê? 60, que seria o endereço que efetivamente o processo vai utilizar. Uma vez que o processo só utiliza o quê? Só utiliza endereços lógicos, que são endereços que vão de zero até o seu número máximo correspondente ao tamanho do processo.
+
+Então, esse seria o quê? Esse 60, esse 20 aqui, né? Seria o quê? Esse 20 aqui seria o base e o 60, então, seria o quê? Seria o limite. Justamente para que nenhum endereço possa ultrapassar o limite e nenhum endereço possa ir aquém, né? Do endereço 20, que seria a base onde ele foi carregado. Então, esses seriam os dois valores do registrador, né? 20 do registrador base e o registrador do limite.
+
+Bom, aí entra também um outro cenário. Estamos falando de multiprogramação, tá? Um sistema multiprogramado, a memória é dividida em várias partições diferentes. E existe também o cenário em que os endereços que são utilizados são endereços lógicos.
+
+Por utilizar endereços lógicos, eu preciso fazer o quê? Eu preciso fazer uma conversão para um endereço físico. Mas quem é que faz essa conversão do endereço lógico para o endereço físico? Voltando aqui, o que é o endereço lógico? O endereço lógico é o endereço como o processo, o seu programa vai trabalhar. E o endereço físico é o endereço de fato onde o processo foi carregado na memória principal.
+
+Então, nesse cenário aqui, tá? Nesse cenário aqui, ela foi carregada no endereço 20. Então, de 20 ao endereço 60 seria o quê? Seria esses endereços virtuais. Mas quem faz essa conversão? Quem faz essa conversão é justamente quem? É justamente um circuito em hardware, que existe em hardware, né? Na CPU, que a gente chama de MMO, Memory Management Unit.
+
+Ele é o responsável por quê? Ele é o responsável para fazer a manipulação dos endereços lógicos para converter esses endereços lógicos em endereços físicos. Ou conhecidos também como endereços físicos reais, né? Bom, existem dois tipos de memória particionada. A memória particionada de partições fixas e a memória particionada de partições variáveis, né? As fixas são as que já são fixadas no início do sistema, no início do boot do sistema, enquanto que as variáveis, elas ocorrem o quê? Alocação dinâmica. 
+
+Ocorre o quê? Ocorre em tempo de execução. É muito simples, né? Como vocês estão vendo aqui. Aqui a gente tem o quê? Aqui a gente tem as partições variáveis.
+
+Ou seja, as partições são criadas durante a execução dos processos. Então, aqui a gente tem uma memória totalmente vazia, que consistia apenas do sistema operacional. Chegou o processo A, ele é carregado o quê? Aqui na base da memória.
+
+Chegou o processo B e assim por diante. O C, ele vai carregando. O processo A, ele termina sua execução.
+
+Então, essa partição aqui, ela fica o quê? Ela fica liberada. Como ela fica liberada, entra o processo D e ela verifica que o processo D, ela cabe nessa partição. Então, ela coloca o processo D aqui e continua sua execução.
+
+O processo B, por sua vez, finaliza sua execução. Então, existe o quê? Existe essa partição, esse tamanho aqui que é liberado. Quando o processo A quiser voltar, ele pode ser carregado nessa área que foi liberada pelo processo B. Então, esse é o quê? Esse é um tipo de particionamento que a gente chama de particionamento de partições variáveis.
+
+Bom, agora o que seria o swap? O swap seria o quê? Essa transferência de dados ou de páginas ou de partições entre a memória principal e uma memória secundária. Como nem tudo vai caber dentro da memória principal, o que a gente faz? A gente deixa algumas partes, partes que não estão sendo manuseadas, numa área que a gente chama de área de swap. Essa área de swap, então, é utilizada para quê? É utilizada para fazer essa permuta.
+
+Então, swap-in seria para colocar na memória principal e swap-out seria o quê? Seria para tirar da memória principal e colocar em disco enquanto o quê? Então, possam ocupar essa área da memória uma vez que ele pode estar em um processo de wait. Bom, como é que a gente faz, então, finalmente aqui? Como é que a gente faz o gerenciamento de espaço na memória? Então, tem duas formas. A primeira forma é através do que a gente chama de mapa de bits.
+
+Então, a gente tem aqui o bitmap, que é uma tabela aqui. E a segunda forma é através do quê? Através do que a gente chama de lista encadeada. Então, o bitmap, como vocês estão vendo aqui, ela tem o quê? Ela tem um entorno de, vamos dizer assim, de 4kbytes.
+
+Então, esses 4kbytes são o quê? São colocadas como um, caso ela seja o quê? Ela esteja ocupada. Nesse cenário aqui, o processo A, ela ocupou um, dois, três, quatro e cinco. Cinco blocos.
+
+Cinco porções aqui. Então, a gente vai ter o quê? A gente vai colocar aqui um, dois, três, quatro e cinco. E esses três blocos que se encontram livre, a gente deixa o quê? A gente deixa como zero, uma vez que ele não se encontra ocupado.
+
+E assim por diante. Ele vai proceder com esse gerenciamento desse bitmap, de acordo com o quê? De acordo com o uso da memória principal. Segunda forma. 
+
+Esse é o bitmap. Segunda forma seria o quê? Seria através da lista encadeada, como eu citei para vocês. Então, você tem o quê? Uma lista contendo o quê? Contendo o número do processo, mais o endereço de início e o endereço o quê? A parte final.
+
+Os slots que eles estão utilizando. Então, zero mais cinco estão aqui. P começa do zero, processo A. Do zero e cinco.
+
+Então, cinco aqui é o último endereço que ele se encontra ocupado. O H vai denotar o quê? O H denota hole, buraco. Ou seja, é uma área de memória que não se encontra ocupada.
+
+E o três seria o quê? Seriam os três slots que se encontram nesse nó. Então, existe um espaço aqui, um hole em branco, a partir do endereço cinco, por três posições. E assim por diante até o quê? Até ele chegar no final, então, da memória principal.
+
+Então, são duas as formas de fazer o quê? De fazer o gerenciamento de espaços livres. Bom, finalmente. Último tópico aqui dessa nossa aula.
+
+Existem os algoritmos de alocação. Existem três formas de alocar uma área livre para um processo. Então, vamos ver aqui como é que ela funciona.
+
+A primeira seria o quê? A melhor escolha seria o quê? Seria escolher a área que mais se encaixa para o processo. Então, como citei aqui, né? A melhor escolha busca a lista inteira e toma o quê? Toma a menor partição. A pior escolha é o inverso.
+
+Nesse cenário aqui, a gente tem esse conjunto de partições e tem um processo de 14 o quê? 14 kbytes. Que quer o quê? Bom, então aí o melhor encaixa aqui seria o quê? Seria esse de 16 bytes. Uma vez que ele tem 14, vai sobrar o quê? Vai sobrar esse espaço aqui.
+
+O pior seria o quê? Seria esse de 32 kbytes. Aí vai sobrar 18 kbytes. E a primeira escolha seria o quê? Seria a locação onde o processo é alocado no primeiro que couber.
+
+Então, assim, eu estou procurando, mas o primeiro que cabe é onde eu vou colocar o processo, uma vez que ele vai caber nessa região. Bom, pessoal, com isso eu termino essa parte introdutória de gênese de memória. E na próxima aula, a gente vai falar sobre as técnicas de memória virtual, a bibliografia continua sendo os Sistemas Operacionais Modernos, quarta edição, o capítulo 4. Então, a gente fica hoje com a parte introdutória e na próxima aula, então, a gente entra para as técnicas de memória virtual.
+
+Muito obrigado, pessoal, pela atenção.
+
+(Transcrito por TurboScribe.ai. Atualize para Ilimitado para remover esta mensagem.)

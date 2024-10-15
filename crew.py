@@ -62,7 +62,7 @@ tripulacao = Crew(
 )
 
 # Lendo o conteúdo da transcrição
-with open('transcript2.txt', 'r', encoding='utf-8') as f:
+with open('transcript3.txt', 'r', encoding='utf-8') as f:
     transcript = f.read()
 
 # Iniciando o processo com a transcrição como entrada
