@@ -61,9 +61,9 @@ tripulacao = Crew(
     verbose=True,
     output_log_file="result/teste.md"
 )
-
+nomeArquivo = input("Digite o nome do arquivo de transcrição: ")
 # Lendo o conteúdo da transcrição
-with open('transcript.txt', 'r', encoding='utf-8') as f:
+with open("transcricoes/"+nomeArquivo, 'r', encoding='utf-8') as f:
     transcript = f.read()
 
 # Iniciando o processo com a transcrição como entrada

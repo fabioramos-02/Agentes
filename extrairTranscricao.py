@@ -4,7 +4,7 @@
 import whisper
 
 # Carrega o modelo Whisper (você pode escolher entre tiny, base, small, medium, large)
-model = whisper.load_model("base")
+model = whisper.load_model("small")
 
 # Defina o caminho para o arquivo de áudio que deseja transcrever
 audio_path = "gabriel.ogg"  # Substitua pelo caminho do seu arquivo de áudio
@@ -16,5 +16,5 @@ result = model.transcribe(audio_path)
 print(result["text"])
 
 # Opcional: Salvar a transcrição em um arquivo de texto
-with open("transcricao.txt", "w") as f:
+with open("transcricoes/gabriel.txt", "w", encoding="utf-8") as f:
     f.write(result["text"])
