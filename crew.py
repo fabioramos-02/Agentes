@@ -8,7 +8,7 @@ ferramenta_pesquisa = DuckDuckGoSearchRun()
 agente_analise = Agent(
     role="Analista de Transcrição",
     goal="Analisar a {transcript} e transformar em bullet points.",
-    backstory="Você é um especialista em estruturar informações de maneira concisa e eficiente.",
+    backstory="Você é um especialista em estruturar informações de maneira concisa e eficiente sobre todo assunto abordado",
     verbose=True,
     memory=True
 )
@@ -58,11 +58,12 @@ tripulacao = Crew(
     agents=[agente_analise, agente_pesquisa, agente_revisor],
     tasks=[tarefa_analise, tarefa_pesquisa, tarefa_revisao],
     process=Process.sequential,
-    verbose=True
+    verbose=True,
+    output_log_file="result/teste.md"
 )
 
 # Lendo o conteúdo da transcrição
-with open('transcript3.txt', 'r', encoding='utf-8') as f:
+with open('transcript.txt', 'r', encoding='utf-8') as f:
     transcript = f.read()
 
 # Iniciando o processo com a transcrição como entrada
@@ -75,5 +76,5 @@ resultado_str = str(resultado)
 print(resultado_str)
 
 # Salvando o resultado em formato .md
-with open('podcast.md', 'w', encoding='utf-8') as f:
+with open('result/podcast.md', 'w', encoding='utf-8') as f:
     f.write(resultado_str)
