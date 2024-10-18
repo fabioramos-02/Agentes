@@ -1,130 +1,108 @@
 
-Fala, Impressionadores! Nesse vídeo eu quero ensinar vocês a fazerem transcrição de áudios, qualquer tamanho de áudio, qualquer áudio que você tenha, com uma ferramenta muito boa da OpenAI, que é uma ferramenta gratuita, você não vai precisar nem de chave de API. Vou ensinar vocês a usarem isso dentro do Python. Acompanha comigo, que o passo a passo vai estar todo nessa aula.
+Olá, você está no Controle 360, o podcast da Controladoria-Geral do Estado de Mato Grosso do Sul. Meu nome é Thais Firmino. Hoje os convidados para a conversa são Marco Seixeira, com 21 anos de experiência na área, é secretário-executivo de Transformação Digital do Governo do Estado de Mato Grosso do Sul.
 
-🎵 Música de introdução 🎵 Bom, galera, se você gostou da ideia do vídeo, já deixa aqui o seu like, se inscreve no canal para continuar acompanhando e aprendendo com a gente. E vou deixar para vocês aqui na descrição dois links importantes. O primeiro deles é o link do gabarito que a gente vai fazer na aula de hoje, que essencialmente é um código padrão para você fazer transcrições usando essa ferramenta da OpenAI.
+Entender inovação não é apenas falar que na minha estrutura tem uma área de inovação, ela tem que estar dentro do processo inovador, ela tem que fomentar a inovação, ela tem que divulgar a inovação em todos os níveis dentro da estrutura. Leandra Costa atua há 20 anos no Serviço Brasileiro de Apoio às Micro e Pequenas Empresas, o SEBRAE. A gente tem que entender que a internet é conectividade, ela não é só relacionamento, então vamos usar a conectividade para aprender mais. 
 
-Então o gabarito vai ser um código que você pode salvar no seu computador e usar ele sempre que você precisar. E o segundo link que eu vou deixar também na descrição é o de um minicurso gratuito de Python que eu vou disponibilizar para vocês. E você vai poder pegar esse minicurso, aprender com ele, é um projeto completo que a gente vai fazer no Python.
+Eles têm muita expertise em inovação, que não por acaso é a temática do programa de hoje. Já começo pontuando que é um grande desafio falar desse tema tão amplo e atual, mas o nosso objetivo aqui é abordar a temática de forma leve e descontraída e com certeza com os convidados de hoje o resultado será bem interessante. E eu já começo no cerne da questão. 
 
-Você pode fazer isso depois da aula ou antes da aula, mas pega lá, já pega ele para você agora e depois volta aqui para o vídeo. Bom, galera, é o seguinte, para a gente conseguir usar essa ferramenta da OpenAI, a gente vai precisar instalar uma biblioteca que é a OpenAI Whisper. Esse Whisper é justamente a ferramenta que consegue fazer transcrição de áudio e ele serve exatamente para isso.
+A inovação é mais uma questão de ótica ou de fibra ótica? Acho que é um complemento dos dois. Inovação a gente tem conceitualmente é recriar, criar algo novo, substituir novas metodologias ou plataformas sistêmicas que venham colaborar com o processo de inovação, até inovação de procedimentos, mas considerando um governo digital, se você não tiver conectividade, simultaneamente fibra ótica ela pertence a uma infraestrutura de tecnologia que vem auxiliar no âmbito da conectividade. Então elas têm em comum uma certa sinergia em termos de evolução. 
 
-Ele consegue fazer transcrição de áudio essencialmente em qualquer língua ou pelo menos nas principais línguas. Algumas línguas ele consegue fazer transcrições muito boas, como espanhol, inglês, português, italiano. E algumas outras línguas um pouco menos usadas, digamos assim, às vezes a transcrição dele não é tão boa assim.
+Bom, se a gente considerar que hoje somos fruto de uma evolução da existência do ser humano, nós passamos por mudanças, para acontecer mudanças precisamos de inovar, precisamos fazer diferente aquilo que a gente faz e a gente se apropria pouco do conceito de inovação, só que a inovação está no nosso dia a dia, como diz o Marcos, é fazer diferente aquilo que às vezes a gente faz, mas devido à forma em que a gente aprendeu o contexto da onde a inovação aconteceu por muito tempo, fechada pela ciência, a gente pouco se apropriou disso e o conceito maior é que inovação é tecnologia, a tecnologia é fruto de um processo inovativo, vamos dizer, a tecnologia é o hardware, é o físico, é o celular que está na mão, é a antena que está na casa, é a vacina que a gente usa, mas a inovação é o processo para se chegar lá, é o processo da pesquisa, é o processo da validação, é o processo de fazer diferente um processo, entregar um serviço diferente. Então isso está no nosso dia a dia, a gente não percebe disso, por isso é ambos, é a ótica e é a fibra ótica. Em qual momento da vida de vocês, vocês pararam e pensaram, nossa, inovar é o que eu quero? Eu fiz administração porque eu não encontrei uma formação em inovação, não tinha, como hoje as especializações nessa área, elas são transversais aos setores, mas eu sempre fui de ver as coisas diferente, então eu sou formada em administração, mas não é uma administração comum, eu sou formada em administração comércio internacional porque o mercado é global, mesmo que isso tenha sido um conceito que a gente usa mais hoje na questão do digital, o digital trouxe a questão global, o WWW trouxe pra gente essa globalização, essa percepção maior, mas para a mente, para o processo criativo, para a visão de possibilidades, a formação é um requisito de você dar um direcionamento, mas o trabalhar com a inovação, gostar de inovação é mais uma vocação minha, um propósito meu, do que uma formação técnica. 
 
-Você vai ver que ela não é perfeita, como nenhuma transcrição é perfeita, mas ela realmente é muito boa. E tem um parâmetro que a gente consegue ficar ajustando nela para tornar ela melhor ainda e eu vou mostrar para vocês. Vai ser um trade-off, a gente vai escolher entre velocidade de execução versus qualidade da transcrição.
+Então hoje o que eu sei de inovação é fruto do meio, da cultura em que eu estive presente, dos insumos que eu dei a mim. Hoje tem a possibilidade do uso da internet, eu não tinha, eu aprendi com a enciclopédia no livro, mas a gente tem que entender que a internet é conectividade, ela não é só relacionamento, então vamos usar da conectividade para aprender mais, e aí bem, tem N novas profissões surgindo ou áreas que ainda nem têm formação, então a gente tem que explorar esse universo da infinitas possibilidades. Eu venho também de uma formação de administração, TMB em Finanças, sou contador também, o estudo é um valor agregado para tudo que nós fazemos na nossa vida, tenho diversos cursos que vêm a dar mais subsídio nas tomadas de decisões no quesito inovação, formação técnica não é tudo, ela precisa ser exponencial, então assim, o incentivo a quem está começando no âmbito da sua formação acadêmica é o tempo inteiro pesquisar, estudar, conhecer, inovar, é fazer diferente aquilo que todo mundo faz igual, mas ao mesmo tempo é criar, a gente tem que ser criativo naquilo que nós fazemos. 
 
-Então a gente vai entender como é que isso vai funcionar. Para a gente fazer isso, o primeiro passo é a gente instalar essa biblioteca. Então você pode escolher o editor de código que você quiser, abre lá o seu terminal nesse editor de código.
+Geralmente, em algumas situações, eu já encontrei, conversando sobre inovação mesmo, algumas falas no sentido de, nossa é tão difícil inovar, é tão difícil inovar, será que esse posicionamento em alguns ambientes, de algumas pessoas, não está mais atrelado ao fato de que algumas organizações, instituições, empresas, elas foram projetadas mais para executar do que para inovar? Será que essa raiz da inovação, ela acaba sendo deixada de lado quando se estabelecem processos uníssonos e que muitas vezes não se dá abertura para uma modificação? O que eu vou trazer agora é uma outra pergunta. A inovação, ela não acontece por si só. O que precede isso é uma necessidade de mudança, só que mudança é uma palavra que incomoda, é uma ação que incomoda. 
 
-Então eu vou abrir aqui o meu prompt de comando, está vendo? Comando prompt. Chega aqui agora e eu vou digitar um pip install openai-whisper. Após isso daqui, ele vai fazer a instalação para você. 
+Por quê? Porque significa que você vai abrir mão de algo, para colocar outra forma e isso para nós, seres humanos, muitas vezes não é fácil. Cavalo, como é que é aquela ditada, é aquilo que está, o jogo que está ganhando não se mexe, né? O time que está ganhando não se mexe. Isso, é a segurança por medo de mudança.
 
-No meu caso ela já está instalada. Então ele vai instalar várias coisas, vai demorar um pouquinho, mas ele vai instalar e vai funcionar numa boa. Só que essa biblioteca para ela funcionar, ela precisa que você tenha instalado no seu computador e configurado nas suas variáveis de ambiente o FFmpeg.
+Agora, mudar por mudar também não é bacana. Sim. E a inovação, ela não é legal se você não mensurar de onde você está para onde você quer ir. 
 
-E eu deixei um link disponível aqui para vocês, onde vocês podem pegar e seguir esse passo a passo aqui para instalar o FFmpeg no computador de vocês. Então se você olhar, olha lá, essencialmente aqui é o do Windows, mas você pode simplesmente chegar no Google e digitar FFmpeg download e vai aparecer lá no Linux, no Mac também. Aqui está o passo a passo do Windows. 
+Mesmo que nesse trajeto, os indicadores mostram que não foi bem sucedida a adoção daquela mudança. Mas você só vai saber se você avaliar. Então assim, a mudança, ela deve acontecer para que você ganhe resultados, para que você aumente performance, para que você saia do lugar comum e vá para um lugar inexplorado.
 
-Está aqui no Windows, acho que um pouquinho mais chato do que nos outros. Basicamente o que você vai ter que fazer é, primeiro, clicar nesse link para fazer o download do FFmpeg, do zip. Então quando você clicar nesse link aqui, ele já vai iniciar o download para você, está vendo? Vai iniciar aqui o download, FFmpeg, e ele vai baixar esse zip para você.
+Só que isso pressupõe riscos, sair do controle, fazer diferente aquilo que você faz, mexer naquilo que estava confortável. Então, a inovação só acontece se você tiver disposto a mudanças. As mudanças aconteciam, olha, a gente via 300, 400 anos entre a pesquisa e a aplicação. 
 
-Aí você vai abrir esse arquivo zipado e você vai colocar, vai vir nesse segundo passo aqui. Ou seja, você vai lá na sua pasta download, está vendo o arquivo? Ele aqui vai ter um arquivo zipado aqui dentro. Você vai tirar esse arquivo daqui de dentro e vai jogar ele lá, por exemplo, na sua própria pasta download mesmo.
+Hoje, é questão de horas. A IA, a gente tem ela somente há 400 dias. E saiu uma matéria ontem do Silvio Meira, trazendo que nós temos só mais 800 dias para que ela chegue ao nível da filosofia, ou seja, ao nível do nosso pensamento, da nossa existência. 
 
-Então você pega e joga ele para cá. Quando você jogar ele para cá, você vai pegar esse cara, essa pasta que ele gerou, está vendo? Essa pasta aqui que ele gerou, e você vai mudar o nome dessa pasta aqui para FFmpeg. Só isso aqui, está vendo? FFmpeg. 
+E mais, a IA não é uma ferramenta, ela é algo para trabalhar o nosso pensamento em conjunto. Só que como aplicar isso? Gente, ninguém sabe o que é isso então. E isso nos traz para um risco, para o medo, ao mesmo tempo para um desafio, para fazer algo novo. 
 
-Vai mudar para esse nome. E aí você vai tirar ela daqui, vai dar um CTRL X nela, e lá no seu computador, no disco local C, você vai colar ela. Então você vai colar ela e ela vai aparecer aqui, está vendo? FFmpeg, ela vai estar aqui. 
+Então, nós estamos na fase de aprender com ela, de ensiná-la para construir o que vai surgir. Então, a inovação é isso, é estar nesse meio. O conceito, inclusive, nas startups é aprenda rápido, erre rápido, ajuste rápido com menos dinheiro. 
 
-Isso é você meio que manualmente instalando esse cara no seu computador. Então você pega a pasta e joga para cá. Está pronto.
+Por quê? Para que você consiga viver o processo sem se machucar tanto. Muitas das ações é você estar à frente daquilo que está ocorrendo a nível de inovação. Quando a gente fala de inteligência artificial, a gente tem vários paradigmas. 
 
-Aí a única outra coisa que você vai ter que fazer é liberar ela nas suas variáveis de ambiente. Você pode configurar manualmente isso lá nas suas variáveis de ambiente, ou então rodar esse comando aqui, está vendo? Esse comando aqui, a pasta já tem que estar lá naquela, está vendo? Deixa eu colocar o C, FFmpeg, já tem que estar lá a pasta FFmpeg no seu... Lá naquela pasta que a gente colocou agora, você vai copiar isso aqui, e aí você vai abrir o CMD no seu computador. Só que quando você abrir o CMD, o prompt de comando, você vai abrir ele como administrador.
+Uma é entendê-lo, como aplicar para o bem da população. E o outro é o uso indevido da informação através da IA. Então, a gente tem que ter esses dois paradigmas e acompanhar essa evolução. 
 
-Então botão direito, executar como administrador. E aí quando você fizer isso, você vai clicar em sim, e aí aqui você vai colar aquele comando e vai dar enter. A mensagem que ele vai dar para você é essa aqui.
+Hoje, as grandes preocupações dos governos é computação quântica, que vai acelerar muito a forma da utilização da inteligência artificial. Já que o Marcos iniciou a fala dele mencionando sobre sair da zona de conforto, então, vou fazê-los sair da zona de conforto agora. Nós temos aqui esse recipiente. 
 
-Êxito, o valor foi especificado, foi salvo. Ou seja, você criou essa variável de ambiente. Depois que você fez isso, muito importante, fecha o seu VSCode e abre o VSCode de novo.
+Algumas afirmações estão aí dentro e o jogo da vez é, passa, responde ou passa, tá certo? Pega a afirmação, lê e diz, respondo ou vou passar para o outro convidado. Combinado? Faça as honras, Leandre. Vamos lá. 
 
-O importante é que no VSCode, você aqui, quando você abrir o VSCode, ou o editor de código que você estiver usando, é quando você abrir o seu prompt de comando, quando você chegar aqui e digitar FFmpeg e der um enter, ele aparece essas mensagens aqui, e não aparece aquele texto FFmpeg, não é um comando reconhecido. Se aparecer isso, reinicie o seu computador e ele já vai funcionar. Caso contrário, caso ele apareça aqui tudo bonitinho, você está com tudo pronto para você poder executar os seus códigos.
+Nossa, é grande. Eu vou passar. Então, vamos lá. 
 
-Tranquilo? Então com isso, você já vai ter tudo configurado para você poder usar o OpenAI. E aí o nosso código é a parte mais tranquila, digamos assim. Você vai primeiro importar a biblioteca Whispers, que é essa biblioteca da OpenAI.
+Porque eu acho muito mais interessante você respondê-la. Pode ler audivelmente. A administração pública tem muito a ganhar com o tripé, que é cada vez mais valorizado no mundo dos negócios. 
 
-Você instala ela assim, mas na hora de importar, você importa assim, Whispers. E aí repara o seguinte, eu tenho aqui dois áudios que eu vou deixar disponíveis para vocês fazerem download também. Eu recomendo que vocês façam o código todo com os meus áudios.
+Simplicidade dos serviços, flexibilidade do processo e individualidade da relação com o cliente, no caso, o cidadão. E aí, Marcos? Eu acho, eu vejo assim, ele é um tripé bastante forte quando a gente fala. Simplicidade do serviço, como é que eu levo um programa de desenvolvimento social ao cidadão numa linguagem simples, onde ele consiga obter o resultado que é aderir àquele programa social. 
 
-Depois se você quiser, você pode usar um áudio seu e eu vou te dar até umas dicas ou outras assim, de como você garantir que essa leitura vai ser boa e tudo mais. Então a gente vai fazendo aqui. Aí o Whispers, essencialmente, vai precisar de dois comandos para poder usar ele.
+Então, o Estado tem que se preocupar com a forma, com a linguagem e como eu vou direcionar aquele programa social. Trazer em toda a sua cadeia da administração para chegar na área de desenvolvimento. Que a área de desenvolvimento é programada, desenvolver, homologar e colocar um conceito de produção, é pronto para que o cidadão tenha acesso. 
 
-O primeiro é você criar o seu modelo, que é um modelo digamos assim de inteligência artificial, que vai conseguir ler esse seu áudio. E aí nesse modelo, a gente vai usar o Whispers.loadmodel. E aqui dentro, lá no Whispers, se você entrar na documentação dele, eu vou até abrir aqui que eu acho que vai ser super interessante para mostrar para vocês. Vou abrir aqui, OpenAI Whisper Python.
+Então, essa cadeia tem que ser bem flexível e muito rápida para que os processos ocorram em uma velocidade muito grande. Cada cidadão, para cada programa, para cada atividade de política pública, ele tem uma característica diferente. E essa característica, ela tem que estar presente no momento que você está criando esses programas. 
 
-Então vou botar aqui, OpenAI Whisper Python. E a gente vai entrar aqui no primeiro link. Nesse primeiro link, você vai olhando, chegando aqui para baixo, você vai ver que ele vai ter uma tabelinha para você, que são os modelos disponíveis que ele tem e as línguas disponíveis de tradução.
+E quando eu falo de tecnologia, o desenvolvimento é voltado para aquele público-alvo, sem o qual você não vai conseguir atingir os resultados que você espera, com menor custo, porque nós estamos falando de recursos do Estado, que é o cidadão, que é o dono desses recursos, mas que você tem que ter essa capilaridade. Então, esse TPE é importante. Quando você cria uma cadeia, você tem que estar preocupado com esses três temas, além de outros que fazem parte de todo um processo de uma cadeia produtiva.
 
-Está vendo, espanhol, italiano, inglês e português. Ele erra muito pouco. Dependendo da língua, por exemplo, eu quero ler, sei lá, Maori.
+Vai passar para a Leandra ou vai responder? O dele foi curtinho, Leandra. Vou repassar. Olha aí.
 
-Não sei que língua é essa. Ela erra já bem mais do que no espanhol, italiano, inglês e português. Está vendo, mas aqui ainda tem alguma margem de erro.
+Curiosidade é a base da inovação e a cultura organizacional é o que lhe dá espaço. O que você acha dessa afirmação? Acredito que a curiosidade pode instigar, sim, a inovação, porque você aprende, você vai usar insight de algo que funcionou em algum lugar e pode trazer no quesito de adaptar, de aplicar, assimilar, ou coisa nesse sentido. A cultura organizacional é como as pessoas na empresa respondem aos insumos, estímulos e a forma de operação da empresa. 
 
-Qual é o ponto importante? O ponto é que, está vendo, a gente tem aqui vários modelos. O modelo Tiny, o modelo Base, o modelo Small, o modelo Medium e o modelo Large. Qual a diferença entre eles? Quanto menor o modelo, Tiny, Base, Small, não sei o que, menor é a capacidade que o seu computador precisa para rodar o modelo e mais rápido é a execução do modelo.
+A pessoa que pertence àquela empresa, se ela é curiosa, ela dá insumos para que aquele processo dentro da empresa melhore. Então, vamos dizer aqui que não é um, não é uma afirmação única, mas se eu pegar todas essas palavras e cada hora colocar ela num lugar, ela vai dar infinitas possibilidades e todas são possíveis. Ótimo.
 
-Está vendo? Então, esse modelo aqui, ele roda 32 vezes mais rápido do que o modelo Large. E o modelo Large, você precisa de 10 GB de RAM para você conseguir fazer essa capacidade. Então, você tem que ter um computador muito bom para conseguir rodar o modelo Large.
+Temos mais uma afirmação para cada. Um passou, outro passou, agora fica à vontade, Leandra, mais uma vez, para saber se você responde ou se passa. Vamos ver.
 
-Mas não significa que com o seu computador que você está usando, você não vai conseguir. O modelo Base já é um modelo muito bom. Então, eu particularmente, para esse nosso exemplo, vou usar o modelo Base.
+Eu acho que essa gente pode responder junto, fazer diferente. Está vendo? Inovando, não é? Pois não. A inovação tem sido benéfica para a transparência pública.
 
-Então, eu vou chegar aqui no nosso código e vou aqui passar o modelo Base para ele. Então, os nomes que você vai colocar aqui são os nomes dessa tabelinha mesmo. Então, eu vou passar para ele o modelo Base.
+Essa, por sua vez, consiste em uma das variáveis que gera credibilidade, engajamento e fidelização. Eu respondo na parte do cidadão. A partir do momento que a gente conhece, a gente fica mais tranquilo, isso gera confiança na relação.
 
-E aí depois, o que você vai fazer? Você vai simplesmente pedir para o modelo fazer um transcribe. E aqui dentro do parênteses, você vai passar o áudio que você quer que ele transcreva para você. No meu caso, eu vou pedir para ele fazer o gravando.m4a. Esse arquivo m4a é o arquivo que o próprio gravador do Windows gera para a gente.
+E quando você tem menos atrito ou barreiras para se ter acesso a esse conhecimento, a credibilidade aumenta mais. Então, hoje, se a gente for analisar enquanto cliente, a gente não quer ligar naqueles 0800, porque a URA te leva milhões de opções e você não acha aquilo que você quer. Entretanto, se a empresa tem um canal de WhatsApp, ou tem um canal, um site que te dá a resposta que você precisa, aquilo te passa mais confiança, porque você tem menos barreira de relacionamento.
 
-Mas poderia ser mp3, por exemplo. O áudio vai funcionar numa boa. O que é importante? É importante que a qualidade do áudio seja legal.
+Então, isso eu considero que a gente tem esse mesmo valor quando a gente vai entender de questões públicas, questões de governo. E aí, a parte do engajamento e fidelização com o viés do governo, eu dou para você complementar. Bom, a gente sabe que a LAI, ela deu aí para dar bastante note na transparência de Estado em relação ao cidadão.
 
-Essa ferramenta do transcribe tem vários parâmetros. E são parâmetros de ajuste do modelo. Então, se o seu modelo estiver com muito ruído de fundo, muita coisa e tal, talvez a sua transcrição não saia boa.
+Ela tem que ser pública, ela tem que ser simples, ela tem que ser diretiva, ela tem que ser elucidativa ao cidadão, buscando com que o governo dê maior transparência para os recursos orçamentários, através dos seus planos plurianuais, para atender ao cidadão de uma forma mais ampla. Ela tem um viés que tem que gerar credibilidade, credibilidade é acesso à informação, acesso a uma informação clara, objetiva, diretiva, na linguagem que o cidadão precisa. Eu sempre foco na linguagem, porque hoje é uma preocupação nacional, internacional inclusive, de como que você consegue falar com o cidadão na linguagem dele, na forma que ele entenda de uma forma muito mais rápida, simples e bem elucidativa.
 
-Talvez, na verdade, a sua transcrição pause num determinado momento. Eu tinha gravado um áudio no WhatsApp mesmo assim, tinha me mandado no WhatsApp. Quando eu peguei ele em outro lugar, eu tentei rodar ele e o modelo não funcionou muito bem.
+Engajamento e fidelização faz parte desse processo dentro da administração, falo da administração pública e falo do setor privado também. A gente tem essa necessidade de engajamento, capacitação, quando eu falo de servidor, entender o que é inovação, entender o que é tecnologia. Você fala o que é um iCloud, um Big Data, as grandes Big Techs, como é que eu utilizo essas ferramentas tecnológicas para poder fomentar a política pública, no sentido de que o cidadão, ele tem que estar muito mais presente com essas ferramentas de uma forma simples, clara, e ele entender que quando ele precisa de um serviço do Estado, seja ele através de um canal 0800 ou de uma linha de comunicação direta, ele tem o serviço dele atingido e atendido.
 
-Então, eu não recomendo que você grave áudios no WhatsApp e depois tente exportar do WhatsApp para você tentar usar. Porque áudio de WhatsApp, especificamente nos testes que eu fiz, ele não estava indo muito bem. Agora, áudio de um vídeo do YouTube que eu tinha testado, ele tinha ido bem.
+Muitas vezes a gente busca, como que eu vou levar isso de uma forma rápida e simples? Como é que eu levo ele para uma porta de entrada única? Hoje nós temos o Portal Único do Estado, que foi implementado no finalzinho do ano passado, que dá essa porta de entrada única para todos os serviços ditados de todas as secretarias. Neste momento, eu tenho que atendê-lo, inclusive, nas demandas, como é que eu consigo chegar no caminho. Então, num processo automatizado, se ele estiver indo para um caminho de uma carta de serviço para um determinado serviço, não é aqui que ele precisa estar se logando, automaticamente ele só coloca uma query de uma palavra, volta e já direciona ele para o local correto.
 
-Áudio que eu gravei no meu próprio computador, ele tinha ido bem. Então, dependendo do áudio que você está querendo usar, ele vai funcionar bem ou vai funcionar mal. Também depende um pouco da qualidade do seu microfone.
+Isso é ser um facilitador, numa linguagem bastante diretiva para que o cidadão consiga complementar. Então, compartilho a fala da colega, justamente porque as duas estão transversalmente muito ligadas e ela precisa, e a gente tem essa necessidade de que a transparência na administração pública é tudo para o cidadão, mas sempre focando numa linguagem bastante simple e comunicativa. Maravilha.
 
-E como eu falei, você pode, se quiser, olhar o transcribe para ver os outros parâmetros que você pode ir passando para ele e para ele ir testando. Então, isso daqui é tudo o que você precisa fazer. Só que esse transcribe aqui, ele vai dar para você uma resposta.
+E falta um papelzinho, então, Marcos, decide se você responde ou passa, a expectativa. Inovação. Tem momento que acerto, tem momento que aprendo.
 
-Então, eu vou armazenar essa resposta em uma variável. A resposta vai ser o modelo.transcribe. E aí, o que a gente vai fazer? Eu vou chegar aqui agora e simplesmente vou dar um print nessa resposta. E vamos rodar o código e ver o que vai funcionar.
+Considerar resultado de processo inovativo como erro e não como aprendizado, limita a visão do inovador. Vamos compartilhar conjuntamente, porque acho que é um tema bastante debatido, ela tem bastante vertente. Trazendo para o âmbito da tecnologia, às vezes você erra, mas aprende com o erro e ganha na velocidade para que aquele erro não seja recorrente.
 
-Olha só, rodei o código. Está vendo? Rodei. Ele vai demorar um pouquinho. 
+Ao mesmo tempo, o aprendizado não limita a visão do inovador. Ele, na verdade, é um fomentador. Quanto mais informações, quanto mais você aprender, quanto mais você ser um divulgador.
 
-Por que vai demorar um pouquinho? Porque esse modelo base tem que ser criado. Depois de criado esse modelo base, ele precisa, essencialmente, ler o seu áudio. Então, ele demora um pouquinho. 
+Eu digo que na área de tecnologia você não pode aprender só para si, você tem que ser um mentor também. Isso tem que ser transparente para todo time, para toda equipe, para toda administração. E quando a gente fala de inovação, é o tempo inteiro a troca de sinergia, a troca de informação, ela tem que ser cada vez mais contundente.
 
-Mas olha lá, mesmo demorando, ele dá para você aqui a resposta. E essa variável resposta é um dicionário. Um dicionário cujo parâmetro texto é o texto que ela leu.
+Capacitação faz parte disso dentro da administração também, para que cada vez mais o termo inovação seja difundido na sua plenitude, não só na sua palavra propriamente dito, porque muitos usam, em qualquer termo, colocar inovação, mas entender inovação não é apenas falar que na minha estrutura tem uma área de inovação, ela tem que estar dentro do processo inovador, ela tem que fomentar a inovação, ela tem que divulgar a inovação em todos os níveis dentro da estrutura. É um pouquinho o que eu tenho para falar. Bom, complementando, inovação não é teimosia, porque a teimosia a gente reclama e faz do mesmo jeito.
 
-Então, eu poderia aqui só olhar o resposta text, se eu só quero saber o texto mesmo que ele transcreveu para mim. Mas, olha que legal. Mesmo eu deixando aqui o resposta completo, ele me diz aqui o texto.
+A inovação, ela é persistência, ela é insistência, porque se você acredita que vai chegar a algo, você vai tentar diversos mecanismos. E a gente tem que entender que hoje a gente não teria a lâmpada se não houvessem, antes da centésima vez, 99 tentativas. Então, a gente tem aí um processo.
 
-Fala galera, tudo bem? Se você não está inscrito no canal e está assistindo o vídeo aqui, você é maluco. Então, clica no botão para se inscrever no canal e para acompanhar a gente. E se eu pegar e rodar esse áudio aqui.
+Então, quando falam em erro, o erro sobre qual perspectiva? Se a inovação ainda não aconteceu. Não naquele local, não naquele processo e não com aquelas pessoas. Então, eu não posso usar que deu errado numa outra empresa, num outro contexto, com outras pessoas, como se fosse o erro ali.
 
-Vou abrir ele aqui no meu computador e vou rodar esse áudio. Você vai ouvir ele falando exatamente isso. Olha só.
+O que a gente tem que entender é, a comunicação, o diálogo, a transparência, faz com que a gente seja mais humilde nesse processo e o outro, o feedback do outro, me ajude nessa evolução. A partir do momento que a gente usa desse contexto para aprender, não tem erro, só ganhos. Mesmo que, a hora que você tiver um indicador, te mostre que aquela decisão não foi a mais assertiva, todo mundo se junta e ajusta e vai buscar uma mais.
 
-Viu? Então, o áudio ele transcreveu de forma perfeita. Esse áudio aqui, que é um áudio relativamente curto, ele transcreveu de forma perfeita. Só que eu gravei um outro áudio maior.
+Mas tenhamos, a gente não teria uma lâmpada se não houvesse 99 tentativas antes. Muito bom. Olha, eu agradeço demais a presença de vocês, Leandra, Marcos.
 
-Como se fosse o início desse vídeo aqui. Quando eu fui gravar o início desse vídeo, eu falei. Cara, vou fazer o seguinte.
+A conversa foi maravilhosa, pelo menos eu considero assim, espero que para vocês também tenha sido muito bom. Foi ótimo, excelente. Muito bom.
 
-Eu vou gravar o início desse vídeo em uma versão para eu botar em um áudio. Depois, eu vou gravar uma outra versão. Que é a versão oficial que vocês estão vendo aqui.
+E eu gostaria de que vocês dessem a palavra final para a gente encerrar esse episódio. Fiquem à vontade. Eu sou apaixonada por inovação.
 
-Que foi o gravando 2.m4a. E aí, olha lá. Se eu rodar esse código agora, você vai ver que agora ele vai demorar mais. Por quê? Porque esse meu segundo áudio, se você olhar até na pasta aqui, ele é bem maior.
+Eu adoro pessoas que pensam, me entregam algo de diferente, mas isso também me provoca fazer isso constantemente. Então, o que eu deixo aqui é, se a gente hoje perceber mais o que somos e o que temos amanhã, a gente consegue aplicar um pouquinho mais. Inovação tem que estar no nosso dia a dia, é no nosso linguajar, é no nosso acordar.
 
-Está vendo? Esse primeiro áudio aqui é de 200kb. Esse aqui é de 791kb. Ele vai demorar mais.
+Todo dia tem que ser um dia novo, todo dia tem que ser um dia inovador, porque o de ontem já passou, mas ele pode ser melhorado. É o conceito de vida, é um conceito de como que você consegue fazer com que os benefícios da inovação cheguem na nossa população. E o cidadão é o foco principal de tudo isso, considerando toda uma cadeia produtiva.
 
-Se você olhar as propriedades dele aqui, você vai ver o tamanho desse áudio. O tamanho desse áudio tem 30 segundos. Meu outro áudio tinha 5, 6 segundos.
+Se você me permite, você usou uma palavra que eu acho muito bacana, resultado. O resultado é o fruto de um processo. Não existe resultado sem um processo.
 
-Ele demorou, mas não demorou tanto não. Já mostrou aqui para mim. E olha lá.
+Não existe o resultado sem uma soma, uma diminuição, uma conta. Então, a gente só obtem resultado se a gente tiver um processo. Maravilha.
 
-Olha o que ele conseguiu transcrever no áudio. Fala, Impressionadores. Nesse vídeo, eu vou ensinar vocês a fazer uma transcrição em áudio.
+É você que nos acompanhou até aqui, muito obrigada. Saiba que você pode seguir a Controladoria Geral do Estado de Mato Grosso do Sul nas mídias sociais. No instagram, no youtube.
 
-Usando uma ferramenta nova da OpenAI. É o que eu falo isso no áudio ali. Essa ferramenta vai permitir você instalar uma única biblioteca.
+Aproveita, se inscreve no canal, ativa as notificações e curte os episódios. Combinado? O Controle 360 é isso. Oportunidade de conversas interessantíssimas com quem entende do assunto.
 
-Usando seu código em Python. Com 3, 4 linhas. Aqui já tem um leve erro.
-
-Você já vai conseguir transcrever não sei o que. Aí ele bota um texto aqui. Modelos.
-
-Ao invés de falar modelos, ele botou modelos. Está vendo? Então ele tem alguns erros. Porque eu estou usando o modelo base.
-
-Talvez você possa testar aqui o modelo small. O modelo mídimo. Para ver se ele consegue fazer essa transcrição melhor do que o modelo base conseguiu fazer a transcrição.
-
-Não tem problema. Então vai de testes mesmo que você quer ir fazendo. Mas repara.
-
-Com duas linhas de código, você consegue pegar um áudio e transcrever o áudio. Era esse potencial que eu queria mostrar para vocês. Era isso que eu queria trazer para vocês.
-
-Minha sugestão. Cara, testem com o áudio de vocês. Testa você gravando o áudio mesmo.
-
-Colocando aqui. Grava direto no seu computador. Pode tentar gravar no WhatsApp e baixando mesmo.
-
-É que os áudios do WhatsApp quando ele baixa. Eu acho que ele perde um pouco de qualidade. Ele vem muito compactado.
-
-E aí pode acabar atrapalhando um pouco o modelo de conseguir ler. Mas se você quiser, grava o áudio de algum lugar mesmo que você consiga gravar o áudio com qualidade. Joga para cá para o modelo.
-
-Provavelmente o modelo vai conseguir ler numa boa. Beleza? Espero de verdade que vocês tenham gostado. Espero que tenha feito sentido isso daqui.
-
-Espero que essa transcrição você possa usar para algum exemplo que você queira. Ou para alguma ferramenta que você esteja utilizando. Um grande abraço e até a próxima aula.
+Se Deus quiser, no próximo episódio nos encontraremos por aqui. Forte abraço e até lá. Todo mundo ver e ouvir.

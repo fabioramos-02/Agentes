@@ -9,9 +9,8 @@ agente_analise = Agent(
     role="Analista de Transcrição",
     goal="Analisar a {transcript} e transformar em bullet points.",
     backstory="Você é um especialista em estruturar informações de maneira concisa e eficiente sobre todo assunto abordado",
-    verbose=True,
-    memory=True
-)
+    verbose=True
+)   
 
 # Criando o agente de pesquisa
 agente_pesquisa = Agent(
@@ -19,8 +18,7 @@ agente_pesquisa = Agent(
     goal="Pesquisar mais informações sobre o assunto abordado no vídeo.",
     backstory="Você é um pesquisador experiente que sabe buscar informações relevantes na web.",
     tools=[ferramenta_pesquisa],
-    verbose=True,
-    memory=True
+    verbose=True
 )
 
 # Criando o agente revisor
@@ -28,8 +26,7 @@ agente_revisor = Agent(
     role="Revisor de Conteúdo",
     goal="Revisar e refinar o conteúdo gerado.",
     backstory="Você é um especialista em revisão de texto e sempre garante que o conteúdo seja claro e objetivo.",
-    verbose=True,
-    memory=True
+    verbose=True
 )
 
 # Definindo a tarefa de análise
