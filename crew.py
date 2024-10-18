@@ -4,6 +4,12 @@ from langchain_community.tools import DuckDuckGoSearchRun
 # Ferramenta de pesquisa
 ferramenta_pesquisa = DuckDuckGoSearchRun()
 
+# Explicando a classe Agent
+# role = Papel do agente 	Define a função do agente dentro da tripulação. 
+# goal = O objetivo individual que o agente visa atingir. Ele orienta o processo de tomada de decisão do agente.
+# backstory = História do agente 	Fornece um contexto sobre a experiência e habilidades do agente.
+
+
 # Criando o agente responsável por analisar a transcrição e estruturar o conteúdo
 agente_analise = Agent(
     role="Analista de Transcrição",
@@ -28,6 +34,11 @@ agente_revisor = Agent(
     backstory="Você é um especialista em revisão de texto e sempre garante que o conteúdo seja claro e objetivo.",
     verbose=True
 )
+
+# Explicando a classe Task
+# description = Descrição da tarefa 	Uma declaração clara e concisa do que a tarefa envolve.
+# expected_output = Saída esperada 	Descreve o resultado esperado da tarefa.
+# agent = Agente responsável 	Define qual agente é responsável por realizar a tarefa.
 
 # Definindo a tarefa de análise
 tarefa_analise = Task(
